@@ -3,6 +3,7 @@
 from pymongo import MongoClient
 import pymongo
 from datetime import datetime
+import time
 
 
 
@@ -21,7 +22,7 @@ class Banco:
 
 
     def add_message(self,**kwargs):
-        self.db.message.insert({"name":kwargs["name"],"message":kwargs["message"],"hora":str(datetime.now())})
+        self.db.message.insert({"name":kwargs["name"],"message":kwargs["message"],"hora":str(time.strftime('%d-%m-%Y %H:%M'))})
 
 
 
