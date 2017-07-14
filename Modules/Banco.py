@@ -22,7 +22,7 @@ class Banco:
 
 
     def add_message(self,**kwargs):
-        self.db.message.insert({"name":kwargs["name"],"message":kwargs["message"],"hora":str(time.strftime('%d-%m-%Y %H:%M'))})
+        self.db.message.insert({"name":kwargs["name"],"message":kwargs["message"],"hora":str(time.strftime('%d-%m-%Y %H:%M:%S'))})
 
 
 
