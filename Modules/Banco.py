@@ -2,7 +2,6 @@
 
 from pymongo import MongoClient
 import pymongo
-from datetime import datetime
 import time
 
 
@@ -15,19 +14,11 @@ class Banco:
 
     def filter(self):
         message = []
-        for t in self.db.message.find().sort("hora", pymongo.DESCENDING).limit(25):
+        for t in self.db.message.find().sort("hora", pymongo.DESCENDING).limit(30):
             message.append(t)
         message.reverse()
         return message
 
 
     def add_message(self,**kwargs):
-        self.db.message.insert({"name":kwargs["name"],"message":kwargs["message"],"hora":str(time.strftime('%d-%m-%Y %H:%M'))})
-
-
-
-
-
-if __name__ == '__main__':
-    t = Banco()
-    t.filter()
+        self.db.message.insert({"name":kwargs["name"],"message":kwargs["message"],"hora":str(time.strftime('%d-%m-%Y %H:%M:%S'))})
